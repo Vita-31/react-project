@@ -1,9 +1,11 @@
-.btns {
+.main {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    border-radius: 5px;
-    margin: 50px auto;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 150%;
 }
