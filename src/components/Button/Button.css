@@ -4,7 +4,6 @@
     color: #000;
     border: 1px solid transparent;
     background-color: transparent;
-    max-width: 150px;
     width: 100%;
     height: 45px;
     border-radius: 8px;
@@ -12,20 +11,39 @@
     transition: .3s;
 }
 
-.btn--update {
+.btn-update {
     background-color: #F8FFFB;
     border: 1px solid #B4F1D0;
 }
 
-.btn--update:hover {
+.btn-update:hover {
     background-color: #B4F1D0;
 }
 
-.btn--delete {
+.btn-delete {
     background-color: #FFF8F8;
     border: 1px solid rgba(235, 68, 50, 0.5);
 }
 
-.btn--delete:hover {
+.btn-delete:hover {
     background-color: rgba(235, 68, 50, 0.5);
+}
+
+.btn-black {
+    border: 2px solid #000;
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-black:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-base {
+    max-width: 150px;
+}
+
+.btn-large {
+    max-width: 300px;
 }

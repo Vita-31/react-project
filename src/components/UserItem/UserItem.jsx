@@ -15,8 +15,8 @@ export default function UserItem({user}) {
             <UserBlock title={'City:'} desc={user.address.city}/>
             <UserBlock title={'Zipcode:'} desc={user.address.zipcode}/>
             <div className="userBtns">
-                <Button bg={'update'}>Змінити</Button>
-                <Button bg={'delete'}>Видалити</Button>
+                <Button bg={'update'} size={'base'}>Змінити</Button>
+                <Button bg={'delete'} size={'base'}>Видалити</Button>
             </div>
         </div>
     )

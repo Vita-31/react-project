@@ -1,8 +1,9 @@
 import './Button.css'
 
-function Button({bg, children}) {
-    const bgClass = bg ? `btn--${bg}` : '';
-    const classes = [bgClass].filter(Boolean).join(' ')
+function Button({bg, size, children}) {
+    const bgClass = bg ? `btn-${bg}` : '';
+    const sizeClass = size ? `btn-${size}` : ''
+    const classes = [bgClass, sizeClass].filter(Boolean).join(' ')
   return (
     <button className={`btn ${classes}`}>{children}</button>
   )
