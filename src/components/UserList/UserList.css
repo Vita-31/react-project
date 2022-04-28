@@ -1,5 +1,4 @@
-.users-list {
-    list-style: none;
-    margin: 20px 0;
-    
+.users {
+    display: flex;
+    gap: 20px 40px;
 }

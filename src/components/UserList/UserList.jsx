@@ -11,9 +11,10 @@ export default function UsersList() {
 
     useEffect(() => {
         getUsers()
-            .then(res => setUsers(res.data))
+            .then(res => setUsers(res.data)) 
             .catch(err => setError(err))
             .finally(() => setLoad(false))
+            
     }, [])
 
     if(error) {
@@ -29,10 +30,10 @@ export default function UsersList() {
     }
 
     return (
-        <ul className="users-list">
+        <div className="users">
             { users.map((user) =>  (
-                <UserItem key={ user.id }>{ user.name }</UserItem>
+                <UserItem key={ user.id } user={ user }></UserItem>
             )) }
-        </ul>
+        </div>
     )
 }

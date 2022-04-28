@@ -7,7 +7,6 @@ function App() {
     <>
     <Header/>
     <div className='container main'>
-        <h1 className='title'>Список користувачів</h1>
         <UserList/>
     </div>
     </>
