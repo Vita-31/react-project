@@ -5,11 +5,11 @@ const api = axios.create({
 })
 
 export function getUsers() {
-    return api.get('')
+    return api.get('/')
 }
 
 export function getUser(id) {
-    return api.get(`${id}`)
+    return api.get(`/${id}`)
 }
 
 export function createUser(data) {
@@ -17,9 +17,9 @@ export function createUser(data) {
 }
 
 export function updateUser(id, data) {
-    return api.patch(`${id}`, data)
+    return api.patch(`/${id}`, data)
 }
 
 export function deleteUser(id) {
-    return api.delete(`${id}`)
+    return api.delete(`/${id}`)
 }

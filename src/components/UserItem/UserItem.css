@@ -1,5 +1,5 @@
 .userItem {
-    width: 48%;
+    width: calc((96% - 20px) / 2);
     padding: 20px;
     background: #FFFFFF;
     border: 1px solid #E9E9E9;
