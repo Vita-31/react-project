@@ -1,7 +1,6 @@
 import './CreateUser.css'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
-import { useEffect } from 'react';
 import { createUser } from '../../api/users';
 
 function CreateUser() {
@@ -30,7 +29,6 @@ function CreateUser() {
             }
         }
         createUser(newUser)
-            .then(res => console.log(res.data))
         event.target.reset()
     }
   return (
