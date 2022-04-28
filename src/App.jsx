@@ -1,14 +1,16 @@
 import './App.css';
-import UsersList from './components/UsersList';
+import UserList from './components/UserList/UserList';
+import Header from './components/Header/Header';
 
 function App() {
   return (
-    <div className='main'>
-      <div className="container">
+    <>
+    <Header/>
+    <div className='container main'>
         <h1 className='title'>Список користувачів</h1>
-        <UsersList/>
-      </div>
+        <UserList/>
     </div>
+    </>
   );
 }
 

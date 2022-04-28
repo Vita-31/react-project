@@ -1,0 +1,31 @@
+.header {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 30px;
+    line-height: 120%;
+    font-weight: 600;
+    color: #2F4F4F;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 0 30px;
+}
+
+.navLink {
+    font-size: 18px;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}

@@ -1,14 +1,14 @@
-.main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 .container {
     max-width: 1200px;
     width: 100%;
     padding: 0 15px;
     margin: 0 auto;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .title {

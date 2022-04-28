@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getUsers } from '../api/users'
-import UserItem from './UserItem'
-import './UsersList.css'
+import { getUsers } from '../../api/users'
+import UserItem from '../UserItem/UserItem'
+import './UserList.css'
 
 export default function UsersList() {
 
