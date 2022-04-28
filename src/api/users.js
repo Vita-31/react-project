@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:1234/users'
+    baseURL: 'https://app-json3.herokuapp.com/users'
 })
 
 export function getUsers() {
