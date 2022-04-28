@@ -1,0 +1,9 @@
+.user-item {
+    padding: 30px 0 0 0;
+    font-size: 26px;
+    line-height: 100%;
+}
+
+.user-item:first-child {
+    padding-top: 0;
+}
