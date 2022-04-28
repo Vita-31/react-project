@@ -1,44 +1,18 @@
 import './UserItem.css'
+import UserBlock from '../UserBlock/UserBlock'
 
 export default function UserItem({user}) {
     return (
         <div className="userItem">
-            <div className="userBlock">
-                <p className="userTitle">Name:</p>
-                <p className="userDesc">{user.name}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Username:</p>
-                <p className="userDesc">{user.username}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Email:</p>
-                <p className="userDesc">{user.email}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Website:</p>
-                <p className="userDesc">{user.website}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Phone:</p>
-                <p className="userDesc">{user.phone}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Street:</p>
-                <p className="userDesc">{user.address.street}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Suite:</p>
-                <p className="userDesc">{user.address.suite}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">City:</p>
-                <p className="userDesc">{user.address.city}</p>
-            </div>
-            <div className="userBlock">
-                <p className="userTitle">Zipcode:</p>
-                <p className="userDesc">{user.address.zipcode}</p>
-            </div>
+            <UserBlock title={'Name:'} desc={user.name}/>
+            <UserBlock title={'Username:'} desc={user.username}/>
+            <UserBlock title={'Email:'} desc={user.email}/>
+            <UserBlock title={'Website:'} desc={user.website}/>
+            <UserBlock title={'Phone:'} desc={user.phone}/>
+            <UserBlock title={'Street:'} desc={user.address.street}/>
+            <UserBlock title={'Suite:'} desc={user.address.suite}/>
+            <UserBlock title={'City:'} desc={user.address.city}/>
+            <UserBlock title={'Zipcode:'} desc={user.address.zipcode}/>
         </div>
     )
 }
