@@ -59,39 +59,15 @@ function CreateUser() {
         const city = form.city.value.trim();
         const zipcode = form.zipcode.value.trim();
         let isValid = true;
-        if(name === '') {
+        if(name === '' || username === '' || email === '' || website === '' || phone === '' || street === '' || suite === '' || city === '' || zipcode === '') {
             setNameError('Name is empty')
-            isValid = false
-        }
-        if(username === '') {
             setUserameError('Username is empty')
-            isValid = false
-        }
-        if(email === '') {
             setEmailError('Email is empty')
-            isValid = false
-        }
-        if(website === '') {
             setWebsiteError('Website is empty')
-            isValid = false
-        }
-        if(phone === '') {
             setPhoneError('Phone is empty')
-            isValid = false
-        }
-        if(street === '') {
             setStreetError('Street is empty')
-            isValid = false
-        }
-        if(suite === '') {
             setSuiteError('Suite is empty')
-            isValid = false
-        }
-        if(city === '') {
             setCityError('City is empty')
-            isValid = false
-        }
-        if(zipcode === '') {
             setZipcodeError('Zipcode is empty')
             isValid = false
         }
