@@ -5,3 +5,12 @@
     padding: 6px 0;
     color: #000;
 }
+
+.input.validate {
+    border-bottom: 1px solid red;
+    color: red;
+}
+
+.input.validate input::placeholder {
+    color: red;
+}
