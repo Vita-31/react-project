@@ -1,6 +1,7 @@
 import './CreateUser.css'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
+import Error from '../Error/Error';
 import { createUser } from '../../api/users';
 import { useState } from 'react';
 
@@ -16,6 +17,7 @@ function CreateUser() {
     const [zipcodeError, setZipcodeError] = useState(null)
     function createNewUser(event) {
         event.preventDefault();
+        resetValidation()
         const isValid = validateForm(event.target)
         if(isValid) {
             const name = event.target.name.value.trim();
@@ -58,58 +60,96 @@ function CreateUser() {
         const zipcode = form.zipcode.value.trim();
         let isValid = true;
         if(name === '') {
-            setNameError('Name is required')
+            setNameError('Name is empty')
             isValid = false
         }
         if(username === '') {
-            setNameError('Name is required')
+            setUserameError('Username is empty')
             isValid = false
         }
         if(email === '') {
-            setNameError('Name is required')
+            setEmailError('Email is empty')
             isValid = false
         }
         if(website === '') {
-            setNameError('Name is required')
+            setWebsiteError('Website is empty')
             isValid = false
         }
         if(phone === '') {
-            setNameError('Name is required')
+            setPhoneError('Phone is empty')
             isValid = false
         }
         if(street === '') {
-            setNameError('Name is required')
+            setStreetError('Street is empty')
             isValid = false
         }
         if(suite === '') {
-            setNameError('Name is required')
+            setSuiteError('Suite is empty')
             isValid = false
         }
         if(city === '') {
-            setNameError('Name is required')
+            setCityError('City is empty')
             isValid = false
         }
         if(zipcode === '') {
-            setNameError('Name is required')
+            setZipcodeError('Zipcode is empty')
             isValid = false
         }
         return isValid
+    }
+    function resetValidation() {
+        setNameError(null)
+        setUserameError(null)
+        setEmailError(null)
+        setWebsiteError(null)
+        setPhoneError(null)
+        setStreetError(null)
+        setSuiteError(null)
+        setCityError(null)
+        setZipcodeError(null)
     }
   return (
     <form className='form' onSubmit={createNewUser}>
         <div className="formContainer">
             <div className="formBlock">
-                <Input title={'Enter your name:'} type={'text'} name={'name'} validate={nameError ? 'validate' : ''}/>
-                <Input title={'Enter your userame:'} type={'text'} name={'username'} validate={usernameError ? 'validate' : ''}/>
-                <Input title={'Enter your email:'} type={'email'} name={'email'} validate={emailError ? 'validate' : ''}/>
-                <Input title={'Enter your website:'} type={'text'} name={'website'} validate={websiteError ? 'validate' : ''}/>
-                <Input title={'Enter your phone:'} type={'tel'} name={'phone'} validate={phoneError ? 'validate' : ''}/>
+                <div>
+                    <Input title={'Enter your name:'} type={'text'} name={'name'} validate={nameError ? 'validate' : ''}/>
+                    {nameError && <Error>{nameError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your userame:'} type={'text'} name={'username'} validate={usernameError ? 'validate' : ''}/>
+                    {usernameError && <Error>{usernameError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your email:'} type={'email'} name={'email'} validate={emailError ? 'validate' : ''}/>
+                    {emailError && <Error>{emailError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your website:'} type={'text'} name={'website'} validate={websiteError ? 'validate' : ''}/>
+                    {websiteError && <Error>{websiteError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your phone:'} type={'tel'} name={'phone'} validate={phoneError ? 'validate' : ''}/>
+                    {phoneError && <Error>{phoneError}</Error>}
+                </div>
             </div>
             <div className="formBlock">
-                <Input title={'Enter your street:'} type={'text'} name={'street'} validate={streetError ? 'validate' : ''}/>
-                <Input title={'Enter your suite:'} type={'text'} name={'suite'} validate={suiteError ? 'validate' : ''}/>
-                <Input title={'Enter your city:'} type={'text'} name={'city'} validate={cityError ? 'validate' : ''}/>
-                <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} validate={zipcodeError ? 'validate' : ''}/>
+                <div>
+                    <Input title={'Enter your street:'} type={'text'} name={'street'} validate={streetError ? 'validate' : ''}/>
+                    {streetError && <Error>{streetError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your suite:'} type={'text'} name={'suite'} validate={suiteError ? 'validate' : ''}/>
+                    {suiteError && <Error>{suiteError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your city:'} type={'text'} name={'city'} validate={cityError ? 'validate' : ''}/>
+                    {cityError && <Error>{cityError}</Error>}
+                </div>
+                <div>
+                    <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} validate={zipcodeError ? 'validate' : ''}/>
+                    {zipcodeError && <Error>{zipcodeError}</Error>}
+                </div>
             </div>
         </div>
         <div className="formBtns">
