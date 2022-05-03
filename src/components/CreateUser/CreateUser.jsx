@@ -17,18 +17,18 @@ function CreateUser() {
     const [zipcodeError, setZipcodeError] = useState(null)
     function createNewUser(event) {
         event.preventDefault();
+        const name = event.target.name.value.trim();
+        const username = event.target.username.value.trim();
+        const email = event.target.email.value.trim();
+        const website = event.target.website.value.trim()
+        const phone = event.target.phone.value.trim();
+        const street = event.target.street.value.trim();
+        const suite = event.target.suite.value.trim();
+        const city = event.target.city.value.trim();
+        const zipcode = event.target.zipcode.value.trim();
         resetValidation()
-        const isValid = validateForm(event.target)
+        const isValid = validateForm({name, username, email, website, phone, street, suite, city, zipcode})
         if(isValid) {
-            const name = event.target.name.value.trim();
-            const username = event.target.username.value.trim();
-            const email = event.target.email.value.trim();
-            const website = event.target.website.value.trim()
-            const phone = event.target.phone.value.trim();
-            const street = event.target.street.value.trim();
-            const suite = event.target.suite.value.trim();
-            const city = event.target.city.value.trim();
-            const zipcode = event.target.zipcode.value.trim();
             const newUser = {
                 name,
                 username,
@@ -48,16 +48,7 @@ function CreateUser() {
             console.log('not validate')
         }
     }
-    function validateForm(form) {
-        const name = form.name.value.trim();
-        const username = form.username.value.trim();
-        const email = form.email.value.trim();
-        const website = form.website.value.trim()
-        const phone = form.phone.value.trim();
-        const street = form.street.value.trim();
-        const suite = form.suite.value.trim();
-        const city = form.city.value.trim();
-        const zipcode = form.zipcode.value.trim();
+    function validateForm({name, username, email, website, phone, street, suite, city, zipcode}) {
         let isValid = true;
         if(name === '') {
             setNameError('Name is empty')
