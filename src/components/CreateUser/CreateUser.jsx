@@ -5,7 +5,7 @@ import Error from '../Error/Error';
 import { createUser } from '../../api/users';
 import { useState } from 'react';
 
-function CreateUser() {
+function CreateUser({setUsers}) {
     const [nameError, setNameError] = useState(null)
     const [usernameError, setUserameError] = useState(null)
     const [emailError, setEmailError] = useState(null)
@@ -43,6 +43,8 @@ function CreateUser() {
                 }
             }
             createUser(newUser)
+                .then(res => setUsers(prevUser => [...prevUser, res.data]))
+                .catch(err => console.log(err))
             event.target.reset()
         } else {
             console.log('not validate')
