@@ -1,7 +1,7 @@
 import UserItem from '../UserItem/UserItem'
 import './UserList.css'
 
-export default function UsersList({data}) {
+export default function UsersList({data, setUsers}) {
 
     if(data.error) {
         return (
@@ -18,7 +18,7 @@ export default function UsersList({data}) {
     return (
         <div className="users">
             { data.users.map((user) =>  (
-                <UserItem key={ user.id } user={ user }></UserItem>
+                <UserItem setUsers={setUsers} key={ user.id } user={ user }></UserItem>
             )) }
         </div>
     )

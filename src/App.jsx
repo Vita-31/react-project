@@ -24,7 +24,7 @@ function App() {
     <Header/>
     <div className='container main'>
       <CreateUser setUsers={setUsers}/>
-      <UserList data={{ users, usersError, usersLoad }}/>
+      <UserList data={{ users, usersError, usersLoad }} setUsers={setUsers}/>
     </div>
     </>
   );

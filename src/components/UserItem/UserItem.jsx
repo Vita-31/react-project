@@ -2,7 +2,12 @@ import './UserItem.css'
 import UserBlock from '../UserBlock/UserBlock'
 import Button from '../Button/Button'
 
-export default function UserItem({user}) {
+export default function UserItem({user, setUsers}) {
+    // function removeUser(event) {
+    //     console.log(event.target)
+    //     // deleteUser()
+    //     //     .then(res => setUsers(res.data))
+    // }
     return (
         <div className="userItem">
             <UserBlock title='Id:' desc={user.id}/>
@@ -16,8 +21,8 @@ export default function UserItem({user}) {
             <UserBlock title='City:' desc={user.address?.city}/>
             <UserBlock title='Zipcode:' desc={user.address?.zipcode}/>
             <div className="userBtns">
-                <Button bg={'update'} size={'base'}>Змінити</Button>
-                <Button bg={'delete'} size={'base'}>Видалити</Button>
+                <Button bg={'update'} size={'base'} id={user.id}>Змінити</Button>
+                <Button bg={'delete'} size={'base'} id={user.id} setUsers={setUsers}>Видалити</Button>
             </div>
         </div>
     )
