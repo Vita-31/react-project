@@ -18,10 +18,13 @@ export default function UsersList() {
     }
 
     return (
-        <div className="users">
-            { users.map((user) =>  (
-                <UserItem key={ user.id } user={ user }></UserItem>
-            )) }
-        </div>
+        <>
+            <div className="users">
+                { users.map((user) =>  (
+                    <UserItem key={ user.id } user={ user }></UserItem>
+                )) }
+            </div>
+        </>
+        
     )
 }
