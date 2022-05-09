@@ -1,13 +1,19 @@
 import './UserItem.css'
 import UserBlock from '../UserBlock/UserBlock'
 import Button from '../Button/Button'
+import { deleteUser } from '../../api/users'
+import useUsers from '../../hooks/useUsers'
 
-export default function UserItem({user, setUsers}) {
-    // function removeUser(event) {
-    //     console.log(event.target)
-    //     // deleteUser()
-    //     //     .then(res => setUsers(res.data))
-    // }
+export default function UserItem({user}) {
+    const {setUsers} = useUsers();
+    function removeUser() {
+        const userId = user.id
+        deleteUser(userId)
+          .then(res => 
+            setUsers(users => users.filter(user => userId !== user.id))
+          )
+          .catch(err => console.log(err))
+      }
     return (
         <div className="userItem">
             <UserBlock title='Id:' desc={user.id}/>
@@ -22,7 +28,7 @@ export default function UserItem({user, setUsers}) {
             <UserBlock title='Zipcode:' desc={user.address?.zipcode}/>
             <div className="userBtns">
                 <Button bg={'update'} size={'base'} id={user.id}>Змінити</Button>
-                <Button bg={'delete'} size={'base'} id={user.id} setUsers={setUsers}>Видалити</Button>
+                <Button bg={'delete'} size={'base'} id={user.id} onClick={removeUser}>Видалити</Button>
             </div>
         </div>
     )

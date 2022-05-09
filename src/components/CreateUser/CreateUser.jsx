@@ -4,8 +4,12 @@ import Button from '../Button/Button'
 import Error from '../Error/Error';
 import { createUser } from '../../api/users';
 import { useState } from 'react';
+import useUsers from '../../hooks/useUsers';
 
-function CreateUser({setUsers}) {
+function CreateUser() {
+
+    const {setUsers} = useUsers();
+
     const [nameError, setNameError] = useState(null)
     const [usernameError, setUserameError] = useState(null)
     const [emailError, setEmailError] = useState(null)

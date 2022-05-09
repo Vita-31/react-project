@@ -1,15 +1,17 @@
+import useUsers from '../../hooks/useUsers'
 import UserItem from '../UserItem/UserItem'
 import './UserList.css'
 
-export default function UsersList({data, setUsers}) {
+export default function UsersList() {
+    const {usersError, usersLoad, users} = useUsers()
 
-    if(data.error) {
+    if(usersError) {
         return (
             <h2>Has been some error</h2>
         )
     }
 
-    if(data.load) {
+    if(usersLoad) {
         return (
             <h2>Loading...</h2>
         )
@@ -17,8 +19,8 @@ export default function UsersList({data, setUsers}) {
 
     return (
         <div className="users">
-            { data.users.map((user) =>  (
-                <UserItem setUsers={setUsers} key={ user.id } user={ user }></UserItem>
+            { users.map((user) =>  (
+                <UserItem key={ user.id } user={ user }></UserItem>
             )) }
         </div>
     )
