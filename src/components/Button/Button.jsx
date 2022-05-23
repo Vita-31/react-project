@@ -5,7 +5,7 @@ function Button({bg, size, id, children, ...props}) {
     const sizeClass = size ? `btn-${size}` : ''
     const classes = [bgClass, sizeClass].filter(Boolean).join(' ')
   return (
-    <button {...props} id={id} className={`btn ${classes}`}>{children}</button>
+    <button {...props} id={id} className={`btn ${classes}`} type="submit">{children}</button>
   )
 }
 

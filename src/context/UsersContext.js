@@ -9,8 +9,9 @@ export default function UsersProvider({children}) {
     const [usersError, setUsersError] = useState(null)
     const [usersLoad, setUsersLoad] = useState(false)
     const [usersModal, setUsersModal] = useState(false)
-    const [userId, setUserId] = useState()
-    const [userKey, setUserKey] = useState()
+    const [userId, setUserId] = useState('')
+    const [userKey, setUserKey] = useState('')
+    const [searchQuery, setSearchQuery] = useState('')
   
     useEffect(() => {
         getUsers()
@@ -20,7 +21,7 @@ export default function UsersProvider({children}) {
             
     }, [])
 
-    const usersData = {users, usersError, usersLoad, usersModal, userId, userKey, setUsers, setUsersError, setUsersLoad, setUsersModal, setUserId, setUserKey}
+    const usersData = {users, usersError, usersLoad, usersModal, userId, userKey, searchQuery, setUsers, setUsersError, setUsersLoad, setUsersModal, setUserId, setUserKey, setSearchQuery}
 
     return <UsersContext.Provider value={usersData}>{children}</UsersContext.Provider>
 }
