@@ -5,14 +5,14 @@ import useUsers from '../../hooks/useUsers';
 import { updateUser } from '../../api/users';
 
 export default function Modal() {
-    const {usersModal, setUsers} = useUsers()
-
+    const {usersModal, userId, userKey, setUsersModal, setUsers} = useUsers()
+    
     if(!usersModal) {
         return <></>
     }
 
     function closeModal() {
-       
+        setUsersModal(false)
     }
 
     function updateForm(event) {
@@ -39,7 +39,15 @@ export default function Modal() {
                 city,
                 zipcode
             }
-        }   
+        }
+
+        updateUser(userId, updateData)
+            .then(res => {
+                // setUsers(users => users.splice(userKey, updateData))
+            })
+            .catch(err => console.log(err))
+           
+        setUsersModal(false)
     }
     return (
         <div className="modal">
@@ -50,39 +58,30 @@ export default function Modal() {
                 <form className="modal__form" onSubmit={updateForm}>
                     <div>
                         <Input title={'Enter your name:'} type={'text'} name={'name'} />
-                        {/* {nameError && <Error>{nameError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your userame:'} type={'text'} name={'username'} />
-                        {/* {usernameError && <Error>{usernameError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your email:'} type={'email'} name={'email'} />
-                        {/* {emailError && <Error>{emailError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your website:'} type={'text'} name={'website'} />
-                        {/* {websiteError && <Error>{websiteError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your phone:'} type={'tel'} name={'phone'} />
-                        {/* {phoneError && <Error>{phoneError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your street:'} type={'text'} name={'street'} />
-                        {/* {streetError && <Error>{streetError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your suite:'} type={'text'} name={'suite'} />
-                        {/* {suiteError && <Error>{suiteError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your city:'} type={'text'} name={'city'} />
-                        {/* {cityError && <Error>{cityError}</Error>} */}
                     </div>
                     <div>
                         <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} />
-                        {/* {zipcodeError && <Error>{zipcodeError}</Error>} */}
                     </div>
                     <div>
                         <Button bg={'update'} size={'base'}>Змінити</Button>

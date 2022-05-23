@@ -14,3 +14,7 @@
 .input.validate input::placeholder {
     color: red;
 }
+
+.input-higher {
+    height: 40px;
+}
