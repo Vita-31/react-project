@@ -5,7 +5,9 @@ import useUsers from '../../hooks/useUsers';
 import { updateUser } from '../../api/users';
 
 export default function Modal() {
-    const {usersModal, userId, userKey, setUsersModal, setUsers} = useUsers()
+    const {users, usersModal, userId, setUsersModal, setUsers} = useUsers()
+
+    const userData = users.find(user => user.id === userId)
     
     if(!usersModal) {
         return <></>
@@ -43,9 +45,15 @@ export default function Modal() {
 
         updateUser(userId, updateData)
             .then(res => {
-                // setUsers(users => users.splice(userKey, updateData))
+                setUsers(users => {
+                    const oldUser = users.findIndex(u => u.id === userId);
+                    const newUsers = [...users];
+                    newUsers[oldUser] = res.data;
+                    return newUsers
+                })
             })
             .catch(err => console.log(err))
+            
            
         setUsersModal(false)
     }
@@ -57,31 +65,31 @@ export default function Modal() {
                 <h2 className="modal-title">Змінити дані</h2>
                 <form className="modal__form" onSubmit={updateForm}>
                     <div>
-                        <Input title={'Enter your name:'} type={'text'} name={'name'} />
+                        <Input title={'Enter your name:'} type={'text'} name={'name'} defaultValue={userData.name}/>
                     </div>
                     <div>
-                        <Input title={'Enter your userame:'} type={'text'} name={'username'} />
+                        <Input title={'Enter your userame:'} type={'text'} name={'username'} defaultValue={userData.username}/>
                     </div>
                     <div>
-                        <Input title={'Enter your email:'} type={'email'} name={'email'} />
+                        <Input title={'Enter your email:'} type={'email'} name={'email'} defaultValue={userData.email}/>
                     </div>
                     <div>
-                        <Input title={'Enter your website:'} type={'text'} name={'website'} />
+                        <Input title={'Enter your website:'} type={'text'} name={'website'} defaultValue={userData.website}/>
                     </div>
                     <div>
-                        <Input title={'Enter your phone:'} type={'tel'} name={'phone'} />
+                        <Input title={'Enter your phone:'} type={'tel'} name={'phone'} defaultValue={userData.phone}/>
                     </div>
                     <div>
-                        <Input title={'Enter your street:'} type={'text'} name={'street'} />
+                        <Input title={'Enter your street:'} type={'text'} name={'street'} defaultValue={userData?.address.street}/>
                     </div>
                     <div>
-                        <Input title={'Enter your suite:'} type={'text'} name={'suite'} />
+                        <Input title={'Enter your suite:'} type={'text'} name={'suite'} defaultValue={userData?.address.suite}/>
                     </div>
                     <div>
-                        <Input title={'Enter your city:'} type={'text'} name={'city'} />
+                        <Input title={'Enter your city:'} type={'text'} name={'city'} defaultValue={userData?.address.city}/>
                     </div>
                     <div>
-                        <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} />
+                        <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} defaultValue={userData?.address.zipcode}/>
                     </div>
                     <div>
                         <Button bg={'update'} size={'base'}>Змінити</Button>

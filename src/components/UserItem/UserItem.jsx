@@ -5,7 +5,7 @@ import { deleteUser } from '../../api/users'
 import useUsers from '../../hooks/useUsers'
 
 export default function UserItem({user}) {
-    const {setUsers, setUsersModal, setUserId, setUserKey} = useUsers();
+    const {setUsers, setUsersModal, setUserId} = useUsers();
     function removeUser() {
         const userId = user.id
         deleteUser(userId)
@@ -18,7 +18,6 @@ export default function UserItem({user}) {
     function openModal() {
         setUsersModal(true)
         setUserId(user.id)
-        setUserKey(user.key)
     }
 
     return (
