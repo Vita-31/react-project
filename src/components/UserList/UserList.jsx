@@ -3,7 +3,7 @@ import UserItem from '../UserItem/UserItem'
 import './UserList.css'
 
 export default function UsersList() {
-    const {usersError, usersLoad, users, searchQuery} = useUsers()
+    const {usersError, usersLoad, users, sortParams, searchQuery} = useUsers()
     
     if(usersError) {
         return (
@@ -26,6 +26,11 @@ export default function UsersList() {
                         .toLocaleLowerCase()
                         .includes(searchQuery)
                     )
+                    .sort((a, b) => {
+                        return String(Number(a[sortParams.key]) || a[sortParams.key])
+                        .localeCompare(String(Number(b[sortParams.key]) || b[sortParams.key]), 
+                        undefined, { numeric: true }) * sortParams.order
+                    })
                     .map((user) =>  (
                         <UserItem key={ user.id } user={ user }></UserItem>
                     )) }

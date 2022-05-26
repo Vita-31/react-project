@@ -17,3 +17,9 @@
     font-size: 40px;
     line-height: 150%;
 }
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}

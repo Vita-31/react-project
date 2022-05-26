@@ -5,6 +5,7 @@ import CreateUser from './components/CreateUser/CreateUser';
 import UsersProvider from './context/UsersContext';
 import Modal from './components/Modal/Modal';
 import Search from './components/Search/Search';
+import Sort from './components/Sort/Sort';
 
 function App() {
 
@@ -14,7 +15,10 @@ function App() {
     <div className='container main'>
       <UsersProvider>
         <CreateUser/>
-        <Search/>
+        <div className='filters'>
+          <Search/>
+          <Sort/>
+        </div>
         <UserList/>
         <Modal></Modal>
       </UsersProvider>
