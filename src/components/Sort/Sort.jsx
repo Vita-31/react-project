@@ -1,25 +1,25 @@
 import useUsers from '../../hooks/useUsers';
 import './Sort.css';
 
-function Sort() {
+function Sort({options}) {
 
-  const {setSortParams} = useUsers();
+  const {setSortParams} = useUsers()
 
-    function sort(event) {
-      const sortValue = event.target.value.split('/');
-      const key = sortValue[0];
-      const order = sortValue[1];
-      setSortParams({key, order}) 
-    }
+  function sort(event) {
+    const optionValue = event.target.value.split('/');
+    const [order, key] = optionValue;
+    setSortParams({order, key})
+  }
 
   return (
-    <form>
-        <select className='select' name='select' onChange={sort}>
-            <option >Сортувати по:</option>
-            <option value="name/1">Ім'я від Я до А</option>
-            <option value="name/-1">Ім'я від А до Я</option>
+    <>
+        <select className='select' name='select' onChange={sort} defaultValue="">
+           <option selected value="">Sort:</option>
+           {options.map(({value, label}) => {
+            return <option key={value} value={value}>{ label }</option>
+           })}
         </select>
-    </form>
+    </>
   )
 }
 

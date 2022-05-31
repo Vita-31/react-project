@@ -9,6 +9,25 @@ import Sort from './components/Sort/Sort';
 
 function App() {
 
+  const sortOptions = [
+    {
+      value: 'name/asc',
+      label: 'Name from A to Z'
+    },
+    {
+      value: 'name/desc',
+      label: 'Name from Z to A'
+    },
+    {
+      value: 'username/asc',
+      label: 'Username from A to Z'
+    },
+    {
+      value: 'username/desc',
+      label: 'Username from Z to A'
+    }
+  ]
+
   return (
     <>
     <Header/>
@@ -17,7 +36,7 @@ function App() {
         <CreateUser/>
         <div className='filters'>
           <Search/>
-          <Sort/>
+          <Sort options={sortOptions}/>
         </div>
         <UserList/>
         <Modal></Modal>

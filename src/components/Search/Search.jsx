@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUsers } from '../../api/users';
+// import { getUsers } from '../../api/users';
 import useUsers from '../../hooks/useUsers';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -7,13 +7,14 @@ import './Search.css';
 
 function Search() {
 
-    const {setUsers, setUsersError, setUsersLoad, setSearchQuery} = useUsers()
+    const {setSearchQuery} = useUsers()
 
     function search(event) {
         event.preventDefault();
         const query = event.target.search.value.trim().toLowerCase();
         setSearchQuery(query)
-        // getUsers({q: query})
+
+        // getUsers()
         //     .then((res) => setUsers(res.data))
         //     .catch((err) => setUsersError(err))
         //     .finally(() => setUsersLoad(false))

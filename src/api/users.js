@@ -4,8 +4,8 @@ const api = axios.create({
     baseURL: 'https://app-json3.herokuapp.com/users'
 })
 
-export function getUsers() {
-    return api.get('/')
+export function getUsers(query) {
+    return api.get('/', {params: query})
 }
 
 export function getUser(id) {
