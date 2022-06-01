@@ -1,4 +1,5 @@
 import useUsers from '../../hooks/useUsers'
+import Spinner from '../Spinner/Spinner'
 import UserItem from '../UserItem/UserItem'
 import './UserList.css'
 
@@ -13,7 +14,7 @@ export default function UsersList() {
 
     if(usersLoad) {
         return (
-            <h2>Loading...</h2>
+            <Spinner/>
         )
     }
 
