@@ -6,6 +6,8 @@ import UsersProvider from './context/UsersContext';
 import Modal from './components/Modal/Modal';
 import Search from './components/Search/Search';
 import Sort from './components/Sort/Sort';
+import Button from './components/Button/Button';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -33,12 +35,21 @@ function App() {
     <Header/>
     <div className='container main'>
       <UsersProvider>
-        <CreateUser/>
-        <div className='filters'>
-          <Search/>
-          <Sort options={sortOptions}/>
-        </div>
-        <UserList/>
+        <Routes>
+          <Route path="/create" element={<CreateUser/>}></Route>
+          <Route path="/" element={ 
+            <>
+              <div className='filters'>
+                <Search/>
+                <Sort options={sortOptions}/>
+              </div>
+              <UserList/> 
+              <div className='mainBtn'>
+                <Button bg={'black'} size={'large'}>Показати більше</Button>
+              </div>
+            </>
+          }/>
+        </Routes>
         <Modal></Modal>
       </UsersProvider>
     </div>

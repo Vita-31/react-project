@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 
 export default function Header() {
@@ -10,13 +11,10 @@ export default function Header() {
             <nav>
                 <ul className="nav">
                     <li className="navItem">
-                        <a href="/#" className="navLink">Main Page</a>
+                        <NavLink to="/" className="navLink">Users Page</NavLink>
                     </li>
                     <li className="navItem">
-                        <a href="/#" className="navLink">Main Page</a>
-                    </li>
-                    <li className="navItem">
-                        <a href="/#" className="navLink">Main Page</a>
+                        <NavLink to="/create" className="navLink">Create User</NavLink>
                     </li>
                 </ul>
             </nav>

@@ -16,6 +16,11 @@ export default function UsersProvider({children}) {
         order: 'asc',
     })
 
+    const [showMoreParams, setShowMoreParams] = useState({
+        start: 0,
+        end: 2
+    })
+
     useEffect(() => {
         fetchUsers({
             q: searchQuery,
@@ -36,7 +41,7 @@ export default function UsersProvider({children}) {
             .finally(() => setUsersLoad(false))
     }
 
-    const usersData = {users, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, setUsers, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers}
+    const usersData = {users, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, showMoreParams, setUsers, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, setShowMoreParams, fetchUsers}
 
     return <UsersContext.Provider value={usersData}>{children}</UsersContext.Provider>
 }

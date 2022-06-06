@@ -41,3 +41,8 @@ a {
 a:hover {
     color: inherit;
 }
+
+.mainBtn {
+    display: flex;
+    justify-content: center;
+}
