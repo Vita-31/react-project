@@ -8,6 +8,7 @@ import Search from './components/Search/Search';
 import Sort from './components/Sort/Sort';
 import Button from './components/Button/Button';
 import { Route, Routes } from 'react-router-dom';
+import UserPage from './components/UserPage/UserPage';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
               </div>
             </>
           }/>
+          {/* <Route path='/user' element={<UserPage/>}></Route> */}
         </Routes>
         <Modal></Modal>
       </UsersProvider>
