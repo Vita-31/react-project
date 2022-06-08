@@ -22,7 +22,6 @@ export default function UsersList() {
     return (
         <>
             <div className="users">
-
                 { users   
                 // .filter((user) => 
                 //     `${user.name} ${user.username} ${user.email} ${user.phone}`

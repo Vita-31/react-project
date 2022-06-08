@@ -50,7 +50,6 @@ function App() {
               </div>
             </>
           }/>
-          {/* <Route path='/user' element={<UserPage/>}></Route> */}
         </Routes>
         <Modal></Modal>
       </UsersProvider>
