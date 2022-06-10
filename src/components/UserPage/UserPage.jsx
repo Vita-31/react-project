@@ -30,6 +30,10 @@ export default function UserPage() {
         setUserId(user.id)
     }
 
+    if(!user.id) {
+        return <h1>User not found</h1>
+    }
+
     return (
         <div className='userPage'>
             <div className="userPageItem">

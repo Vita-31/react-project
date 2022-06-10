@@ -21,12 +21,15 @@ export default function UsersProvider({children}) {
         fetchUsers({
             q: searchQuery,
             _sort: sortParams.key,
-            _order: sortParams.order
+            _order: sortParams.order,
+            _limit: users.length
         })
     }, [searchQuery, sortParams])
   
     useEffect(() => {
-        fetchUsers()
+        fetchUsers({
+            _limit: 3
+        })
     }, [])
 
     function fetchUsers(params) {
@@ -37,7 +40,21 @@ export default function UsersProvider({children}) {
             .finally(() => setUsersLoad(false))
     }
 
-    const usersData = {users, user, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, setUsers, setUser, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers}
+    function fetchExtraUsers(extraUser) {
+        setUsersLoad(true)
+        getUsers({
+            _start: users.length,
+            _end: users.length + extraUser,
+            q: searchQuery,
+            _sort: sortParams.key,
+            _order: sortParams.order,
+        })
+            .then(res => setUsers(prev => [...prev, ...res.data])) 
+            .catch(err => setUsersError(err))
+            .finally(() => setUsersLoad(false))
+    }
+
+    const usersData = {users, user, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, setUsers, setUser, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers, fetchExtraUsers}
 
     return <UsersContext.Provider value={usersData}>{children}</UsersContext.Provider>
 }

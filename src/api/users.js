@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://app-json3.herokuapp.com/users'
+    // baseURL: 'https://app-json3.herokuapp.com/users'
+    baseURL: 'https://jsonplaceholder.typicode.com/users'
 })
 
 export function getUsers(query) {
