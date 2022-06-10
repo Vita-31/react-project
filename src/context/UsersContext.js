@@ -11,14 +11,10 @@ export default function UsersProvider({children}) {
     const [usersModal, setUsersModal] = useState(false)
     const [userId, setUserId] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
+    const [user, setUser] = useState({})
     const [sortParams, setSortParams] = useState({
         key: 'name',
         order: 'asc',
-    })
-
-    const [showMoreParams, setShowMoreParams] = useState({
-        start: 0,
-        end: 2
     })
 
     useEffect(() => {
@@ -41,7 +37,7 @@ export default function UsersProvider({children}) {
             .finally(() => setUsersLoad(false))
     }
 
-    const usersData = {users, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, showMoreParams, setUsers, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, setShowMoreParams, fetchUsers}
+    const usersData = {users, user, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, setUsers, setUser, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers}
 
     return <UsersContext.Provider value={usersData}>{children}</UsersContext.Provider>
 }

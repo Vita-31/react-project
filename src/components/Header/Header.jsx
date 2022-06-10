@@ -16,9 +16,6 @@ export default function Header() {
                     <li className="navItem">
                         <NavLink to="/create" className="navLink">Create User</NavLink>
                     </li>
-                    <li className="navItem">
-                        <NavLink to="/user" className="navLink">User Page</NavLink>
-                    </li>
                 </ul>
             </nav>
         </div>

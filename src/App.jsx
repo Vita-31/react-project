@@ -50,6 +50,7 @@ function App() {
               </div>
             </>
           }/>
+          <Route path="/:userId" element={<UserPage/>}></Route>
         </Routes>
         <Modal></Modal>
       </UsersProvider>
