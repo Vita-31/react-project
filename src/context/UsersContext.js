@@ -4,7 +4,7 @@ import { getUsers } from "../api/users";
 export const UsersContext = createContext()
 
 export default function UsersProvider({children}) {
-
+    const [first, setFirst] = useState('')
     const [users, setUsers] = useState([])
     const [usersError, setUsersError] = useState(null)
     const [usersLoad, setUsersLoad] = useState(false)
@@ -18,12 +18,14 @@ export default function UsersProvider({children}) {
     })
 
     useEffect(() => {
-        fetchUsers({
-            q: searchQuery,
-            _sort: sortParams.key,
-            _order: sortParams.order,
-            _limit: users.length
-        })
+        if(first) {
+            fetchUsers({
+                q: searchQuery,
+                _sort: sortParams.key,
+                _order: sortParams.order,
+                _limit: users.length
+            })
+        }
     }, [searchQuery, sortParams])
   
     useEffect(() => {

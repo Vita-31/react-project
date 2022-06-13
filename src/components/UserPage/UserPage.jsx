@@ -4,19 +4,24 @@ import Button from '../Button/Button'
 import { deleteUser, getUser } from '../../api/users'
 import useUsers from '../../hooks/useUsers'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function UserPage() {
     
+    const navigate = useNavigate()
     const {userId} = useParams()
 
-    const {user, setUser, setUsers, setUsersModal, setUserId} = useUsers();
+    const {user, setUser, setUsersModal} = useUsers();
 
     function removeUser() {
+        // modal for question
         deleteUser(userId)
-            .then(res => 
-                setUsers(users => users.filter(user => userId !== user.id))
-            )
+            .then(res => {
+                // setUsers(users => users.filter(user => userId !== user.id))
+
+                // modal for succes 
+                navigate('/')
+            })
             .catch(err => console.log(err))
     } 
 
@@ -25,9 +30,15 @@ export default function UserPage() {
             .then(res => setUser(res.data))
     }, [userId])
 
+    // remove component with user
+    useEffect(() => {
+        return () => {
+            setUser({})
+        }
+    }, [])
+
     function openModal() {
         setUsersModal(true)
-        setUserId(user.id)
     }
 
     if(!user.id) {
