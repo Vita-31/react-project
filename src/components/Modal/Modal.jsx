@@ -5,9 +5,9 @@ import useUsers from '../../hooks/useUsers';
 import { updateUser } from '../../api/users';
 
 export default function Modal() {
-    const {users, usersModal, userId, setUsersModal, setUsers} = useUsers()
+    const {user, usersModal, setUsersModal, setUser} = useUsers()
 
-    const userData = users.find(user => user.id === userId)
+    // const userData = users.find(user => user.id === userId)
     
     if(!usersModal) {
         return <></>
@@ -43,14 +43,16 @@ export default function Modal() {
             }
         }
 
-        updateUser(userId, updateData)
+        updateUser(user.id, updateData)
             .then(res => {
-                setUsers(users => {
-                    const oldUser = users.findIndex(u => u.id === userId);
-                    const newUsers = [...users];
-                    newUsers[oldUser] = res.data;
-                    return newUsers
-                })
+                setUser(
+                    res.data
+                    // update data for client side
+                    // const oldUser = users.findIndex(u => u.id === userId);
+                    // const newUsers = [...users];
+                    // newUsers[oldUser] = res.data;
+                    // return newUsers
+                )
             })
             .catch(err => console.log(err))
             
@@ -65,31 +67,31 @@ export default function Modal() {
                 <h2 className="modal-title">Змінити дані</h2>
                 <form className="modal__form" onSubmit={updateForm}>
                     <div>
-                        <Input title={'Enter your name:'} type={'text'} name={'name'} defaultValue={userData.name}/>
+                        <Input title={'Enter your name:'} type={'text'} name={'name'} defaultValue={user.name}/>
                     </div>
                     <div>
-                        <Input title={'Enter your userame:'} type={'text'} name={'username'} defaultValue={userData.username}/>
+                        <Input title={'Enter your userame:'} type={'text'} name={'username'} defaultValue={user.username}/>
                     </div>
                     <div>
-                        <Input title={'Enter your email:'} type={'email'} name={'email'} defaultValue={userData.email}/>
+                        <Input title={'Enter your email:'} type={'email'} name={'email'} defaultValue={user.email}/>
                     </div>
                     <div>
-                        <Input title={'Enter your website:'} type={'text'} name={'website'} defaultValue={userData.website}/>
+                        <Input title={'Enter your website:'} type={'text'} name={'website'} defaultValue={user.website}/>
                     </div>
                     <div>
-                        <Input title={'Enter your phone:'} type={'tel'} name={'phone'} defaultValue={userData.phone}/>
+                        <Input title={'Enter your phone:'} type={'tel'} name={'phone'} defaultValue={user.phone}/>
                     </div>
                     <div>
-                        <Input title={'Enter your street:'} type={'text'} name={'street'} defaultValue={userData?.address.street}/>
+                        <Input title={'Enter your street:'} type={'text'} name={'street'} defaultValue={user?.address.street}/>
                     </div>
                     <div>
-                        <Input title={'Enter your suite:'} type={'text'} name={'suite'} defaultValue={userData?.address.suite}/>
+                        <Input title={'Enter your suite:'} type={'text'} name={'suite'} defaultValue={user?.address.suite}/>
                     </div>
                     <div>
-                        <Input title={'Enter your city:'} type={'text'} name={'city'} defaultValue={userData?.address.city}/>
+                        <Input title={'Enter your city:'} type={'text'} name={'city'} defaultValue={user?.address.city}/>
                     </div>
                     <div>
-                        <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} defaultValue={userData?.address.zipcode}/>
+                        <Input title={'Enter your zipcode:'} type={'number'} name={'zipcode'} defaultValue={user?.address.zipcode}/>
                     </div>
                     <div>
                         <Button bg={'update'} size={'base'}>Змінити</Button>
