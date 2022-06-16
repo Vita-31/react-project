@@ -5,10 +5,12 @@ import Error from '../Error/Error';
 import { createUser } from '../../api/users';
 import { useState } from 'react';
 import useUsers from '../../hooks/useUsers';
+import { useNavigate } from 'react-router-dom';
 
 function CreateUser() {
 
     const {setUsers} = useUsers();
+    const navigate = useNavigate()
 
     const [nameError, setNameError] = useState(null)
     const [usernameError, setUserameError] = useState(null)
@@ -50,6 +52,7 @@ function CreateUser() {
                 .then(res => setUsers(prevUser => [...prevUser, res.data]))
                 .catch(err => console.log(err))
             event.target.reset()
+            navigate('/')
         } else {
             console.log('not validate')
         }
