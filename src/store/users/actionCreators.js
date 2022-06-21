@@ -1,27 +1,28 @@
-import { END_LOAD_USERS, SET_USERS, SET_USERS_ERROR, START_LOAD_USERS } from "./actionTypes"
+import { SET_ERROR_USERS, SET_USERS, START_FETCHING_USERS, STOP_FETCHING_USERS } from "./actionTypes";
+
 
 export function setUsers(users) {
     return {
         type: SET_USERS,
         payload: users
-    }
+    } 
 }
 
-export function startUsersLoad() {
+export function startFetching() {
     return {
-        type: START_LOAD_USERS
-    }
+        type: START_FETCHING_USERS
+    } 
 }
 
-export function endUsersLoad() {
+export function stopFetching() {
     return {
-        type: END_LOAD_USERS
-    }
+        type: STOP_FETCHING_USERS
+    } 
 }
 
-export function setErrorUsers(error) {
+export function setUsersError(error) {
     return {
-        type: SET_USERS_ERROR,
+        type: SET_ERROR_USERS,
         payload: error
-    }
+    } 
 }

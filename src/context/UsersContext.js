@@ -56,7 +56,7 @@ export default function UsersProvider({children}) {
             .finally(() => setUsersLoad(false))
     }
 
-    const usersData = {users, user, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, setUsers, setUser, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers, fetchExtraUsers, setFirst}
+    const usersData = {users, user, usersError, usersLoad, usersModal, userId, searchQuery, sortParams, first, setUsers, setUser, setUsersError, setUsersLoad, setUsersModal, setUserId, setSearchQuery, setSortParams, fetchUsers, fetchExtraUsers, setFirst}
 
     return <UsersContext.Provider value={usersData}>{children}</UsersContext.Provider>
 }

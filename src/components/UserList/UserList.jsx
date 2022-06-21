@@ -1,30 +1,40 @@
 import { useEffect } from 'react'
-import { getUsers } from '../../api/users'
 import useUsers from '../../hooks/useUsers'
 import Spinner from '../Spinner/Spinner'
 import UserItem from '../UserItem/UserItem'
 import './UserList.css' 
 import fetchUsers from '../../context/UsersContext'
-import { useDispatch } from 'react-redux'
-import { endUsersLoad, setErrorUsers, setUsers, startUsersLoad } from '../../store/users/actionCreators'
+import { getUsers } from '../../api/users'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUsers, setUsersError, startFetching, stopFetching } from '../../store/users/actionCreators'
+import { usersSelectors } from '../../store/users/selectors'
 
 export default function UsersList() {
-    const {usersError, usersLoad, users, setFirst} = useUsers()
+    const {usersError, usersLoad, setFirst} = useUsers()
     const dispatch = useDispatch()
+    const users = useSelector(usersSelectors)
 
     useEffect(() => {
-        dispatch(startUsersLoad())
+        dispatch(startFetching())
         getUsers()
             .then(res => {
                 dispatch(setUsers(res.data))
             })
-            .catch(error => dispatch(setErrorUsers(error)))
-            .finally(() => dispatch(endUsersLoad()))
-        
-        // fetchUsers({
-        //     _limit: 3
-        // })
-    }, [setFirst])
+            .catch(error => {
+                dispatch(setUsersError(error))
+            })
+            .finally(() => {
+                dispatch(stopFetching())
+            })
+    }, [])
+
+    // for context api
+    // useEffect(() => {
+    //     fetchUsers({
+    //         _limit: 3
+    //     })
+    //     // setFirst(true)
+    // }, [])
 
     if(usersError) {
         return (
@@ -41,7 +51,7 @@ export default function UsersList() {
     return (
         <>
             <div className="users">
-                { users   
+                { users.data   
                 // .filter((user) => 
                 //     `${user.name} ${user.username} ${user.email} ${user.phone}`
                 //     .toLocaleLowerCase()
