@@ -2,12 +2,10 @@ import { useEffect } from 'react'
 import useUsers from '../../hooks/useUsers'
 import Spinner from '../Spinner/Spinner'
 import UserItem from '../UserItem/UserItem'
-import './UserList.css' 
-import fetchUsers from '../../context/UsersContext'
-import { getUsers } from '../../api/users'
+import './UserList.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUsers, setUsersError, startFetching, stopFetching } from '../../store/users/actionCreators'
 import { usersSelectors } from '../../store/users/selectors'
+import { getUsersThunk } from '../../store/users/thunks'
 
 export default function UsersList() {
     const {usersError, usersLoad, setFirst} = useUsers()
@@ -15,17 +13,7 @@ export default function UsersList() {
     const users = useSelector(usersSelectors)
 
     useEffect(() => {
-        dispatch(startFetching())
-        getUsers()
-            .then(res => {
-                dispatch(setUsers(res.data))
-            })
-            .catch(error => {
-                dispatch(setUsersError(error))
-            })
-            .finally(() => {
-                dispatch(stopFetching())
-            })
+        dispatch(getUsersThunk())
     }, [])
 
     // for context api
